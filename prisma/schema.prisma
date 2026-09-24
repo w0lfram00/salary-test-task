@@ -1,0 +1,31 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Worker {
+  id   String @id @default(uuid()) @db.Uuid
+  name String 
+  type WorkType @default(EMPLOYEE)
+
+  managerId String? @db.Uuid
+  manager   Worker? @relation("Hierarchy", fields: [managerId], references: [id])
+  subordinates Worker[] @relation("Hierarchy")
+  
+  startDate DateTime @default(now())
+}
+
+enum WorkType {
+  EMPLOYEE
+  MANAGER
+  SALES
+}

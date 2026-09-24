@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Worker" ALTER COLUMN "type" SET DEFAULT 'EMPLOYEE';

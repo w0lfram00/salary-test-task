@@ -1,0 +1,4 @@
+export const EMPLOYEE_BASE_SALARY = 1000;
+export const MANAGER_BASE_SALARY = 2000;
+export const SALES_BASE_SALARY = 3000;
+export const MS_IN_YEAR = 31557600000;
